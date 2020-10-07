@@ -1,5 +1,4 @@
 //CREATE Employee
-
 function addEmployee() {
     inquirer.prompt([
         {
@@ -30,6 +29,15 @@ function addEmployee() {
 };
 
 // READ Employee
+function readEmployee(){
+    let query = connection.query(
+        "SELECT * FROM employee",
+        function(err, res) {
+            if (err) throw err;
+            console.log(res);
+        }
+    );
+};
 
 // UPDATE Employee
 
