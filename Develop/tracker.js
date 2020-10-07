@@ -30,7 +30,7 @@ inquirer
     }
 ]).then(answer => {
     if (answer.name === "Add department, role, or employee"){
-        // Create function
+        // Create functions
         inquirer
         .prompt([
             {
@@ -43,13 +43,30 @@ inquirer
             if (answer.name === "Department"){
                 addDept();
             } else if (answer.name === "Role"){
-
+                addRole();
             } else if (answer.name === "Employee"){
-
+                addEmployee();
             }
-        })
+        });
     } else if (answer.name === "View departments, roles, or employees"){
         // Read function
+        inquirer
+        .prompt([
+            {
+                type: 'list',
+                message: "Would you like to view current departments, roles, or employees?",
+                choices: ["Departments", "Roles", "Employees"],
+                name: "readChoice"
+            }
+        ]).then(answer => {
+            if (answer.name === "Departments"){
+                readDept();
+            } else if (answer.name === "Roles"){
+                readRole();
+            } else if (answer.name === "Employees"){
+                readEmployee();
+            }
+        });
     } else if (answer.name === "Update employee roles"){
         // Update function
     }

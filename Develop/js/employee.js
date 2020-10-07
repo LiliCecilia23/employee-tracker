@@ -1,6 +1,6 @@
 //CREATE Employee
 
-function addDept() {
+function addEmployee() {
     inquirer.prompt([
         {
             type: "input",
