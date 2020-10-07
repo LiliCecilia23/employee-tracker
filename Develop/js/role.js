@@ -13,7 +13,7 @@ function addRole() {
             name: "roleID"
         }
     ]).then(answer => {
-        const {roleName, roleID} = answer;
+        const {roleNAME, roleID} = answer;
 
         let query = connection.query(
             "INSERT INTO role SET ?",
@@ -22,17 +22,17 @@ function addRole() {
                 name: roleNAME
             }, function (err, res) {
                 if (err) throw err;
-                console.log(res.affectedRows + " department added!\n");
+                console.log(res.affectedRows + " role added!\n");
                 //can chain another function here if I want
             }
         );
     });
 };
 
-// READ DEPARTMENT
+// READ role
 
-// UPDATE DEPARTMENT
+// UPDATE role
 
-// DELETE DEPARTMENT
+// DELETE role
 
 module.exports = "role"

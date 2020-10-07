@@ -1,38 +1,38 @@
-//CREATE Department
+//CREATE Employee
 
 function addDept() {
     inquirer.prompt([
         {
             type: "input",
-            message: "What is the name of this department?",
-            name: "deptNAME"
+            message: "What is the name of this employee?",
+            name: "empNAME"
         },
         {
             type: "input",
-            message: "What is this department's ID?",
-            name: "deptID"
+            message: "What is this Employee's ID?",
+            name: "empID"
         }
     ]).then(answer => {
-        const {deptName, deptID} = answer;
+        const {empNAME, empID} = answer;
 
         let query = connection.query(
-            "INSERT INTO department SET ?",
+            "INSERT INTO Employee SET ?",
             {
-                id: deptID,
-                name: deptNAME
+                id: empID,
+                name: empNAME
             }, function (err, res) {
                 if (err) throw err;
-                console.log(res.affectedRows + " department added!\n");
+                console.log(res.affectedRows + " Employee added!\n");
                 //can chain another function here if I want
             }
         );
     });
 };
 
-// READ DEPARTMENT
+// READ Employee
 
-// UPDATE DEPARTMENT
+// UPDATE Employee
 
-// DELETE DEPARTMENT
+// DELETE Employee
 
-module.exports = "department"
+module.exports = "employee"

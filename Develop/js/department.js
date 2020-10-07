@@ -13,7 +13,7 @@ function addDept() {
             name: "deptID"
         }
     ]).then(answer => {
-        const {deptName, deptID} = answer;
+        const {deptNAME, deptID} = answer;
 
         let query = connection.query(
             "INSERT INTO department SET ?",
