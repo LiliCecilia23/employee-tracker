@@ -69,22 +69,23 @@ inquirer
         });
     } else if (answer.name === "Update employee roles"){
         // Update function
+        let employees = (connection.query(
+            "SELECT id, first_name, last_name FROM employee",
+            function (err, res) {
+                if (err) throw err;
+                console.table(res);
+            }
+        ))
+
         inquirer
         .prompt([
             {
-                type: 'list',
-                message: "Would you like to update current departments, roles, or employees?",
-                choices: ["Departments", "Roles", "Employees"],
+                type: 'input',
+                message: "Above are the currently listed employees. Which employee would you like to update? (Please enter their ID)",
                 name: "updateChoice"
             }
         ]).then(answer => {
-            if (answer.name === "Departments"){
-                updateDept();
-            } else if (answer.name === "Roles"){
-                updateRole();
-            } else if (answer.name === "Employees"){
-                updateEmployee();
-            }
+            console.log(answer);
         });
     }
 });
