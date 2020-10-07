@@ -1,5 +1,4 @@
 //CREATE Department
-
 function addDept() {
     inquirer.prompt([
         {
@@ -30,7 +29,15 @@ function addDept() {
 };
 
 // READ DEPARTMENT
-
+function readDept(){
+    let query = connection.query(
+        "SELECT * FROM department",
+        function(err, res) {
+            if (err) throw err;
+            console.log(res);
+        }
+    );
+};
 // UPDATE DEPARTMENT
 
 // DELETE DEPARTMENT
