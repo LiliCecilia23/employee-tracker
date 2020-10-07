@@ -15,3 +15,22 @@ connection.connect(err => {
     //inquirer function name
 });
 
+inquirer
+.prompt([
+    {
+        message: "Hello! Welcome to the Employee Tracker; what would you like to do?",
+        type:'list',
+        choices: ["Add department, role, or employee",
+        "View departments, roles, or employees",
+        "Update employee roles"],
+        name: "task"
+    }
+]).then(answer => {
+    if (answer.name === "Add department, role, or employee"){
+        // Create function
+    } else if (answer.name === "View departments, roles, or employees"){
+        // Read function
+    } else if (answer.name === "Update employee roles"){
+        // Update function
+    }
+})
