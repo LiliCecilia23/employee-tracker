@@ -69,6 +69,23 @@ inquirer
         });
     } else if (answer.name === "Update employee roles"){
         // Update function
+        inquirer
+        .prompt([
+            {
+                type: 'list',
+                message: "Would you like to update current departments, roles, or employees?",
+                choices: ["Departments", "Roles", "Employees"],
+                name: "updateChoice"
+            }
+        ]).then(answer => {
+            if (answer.name === "Departments"){
+                updateDept();
+            } else if (answer.name === "Roles"){
+                updateRole();
+            } else if (answer.name === "Employees"){
+                updateEmployee();
+            }
+        });
     }
 });
 
