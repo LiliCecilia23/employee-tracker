@@ -30,6 +30,15 @@ function addRole() {
 };
 
 // READ role
+function readRole(){
+    let query = connection.query(
+        "SELECT * FROM role",
+        function(err, res) {
+            if (err) throw err;
+            console.log(res);
+        }
+    );
+};
 
 // UPDATE role
 
