@@ -1,5 +1,8 @@
 const mysql = require('mysql');
 const inquirer = require('inquirer');
+const department = require('department');
+const role = require('role');
+const employee = require('employee');
 
 let connection = mysql.createConnection({
     host: 'localhost',
@@ -52,60 +55,3 @@ inquirer
     }
 });
 
-function addDept() {
-    inquirer.prompt([
-        {
-            type: "input",
-            message: "What is the name of this department?",
-            name: "deptNAME"
-        },
-        {
-            type: "input",
-            message: "What is this department's ID?",
-            name: "deptID"
-        }
-    ]).then(answer => {
-        const {deptName, deptID} = answer;
-
-        let query = connection.query(
-            "INSERT INTO department SET ?",
-            {
-                id: deptID,
-                name: deptNAME
-            }, function (err, res) {
-                if (err) throw err;
-                console.log(res.affectedRows + " department added!\n");
-                //can chain another function here if I want
-            }
-        );
-    });
-};
-
-function addRole() {
-    inquirer.prompt([
-        {
-            type: "input",
-            message: "What is the name of this role?",
-            name: "roleNAME"
-        },
-        {
-            type: "input",
-            message: "What is this role's ID?",
-            name: "roleID"
-        }
-    ]).then(answer => {
-        const {roleName, roleID} = answer;
-
-        let query = connection.query(
-            "INSERT INTO role SET ?",
-            {
-                id: roleID,
-                name: roleNAME
-            }, function (err, res) {
-                if (err) throw err;
-                console.log(res.affectedRows + " department added!\n");
-                //can chain another function here if I want
-            }
-        );
-    });
-};
