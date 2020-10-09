@@ -1,3 +1,6 @@
+const connection = require('./dbConfig');
+const inquirer = require('inquirer');
+
 //CREATE Role
 
 function addRole() {
@@ -44,4 +47,4 @@ function readRole(){
 
 // DELETE role
 
-module.exports = "role"
+module.exports = {addRole, readRole};

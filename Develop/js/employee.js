@@ -1,3 +1,6 @@
+const connection = require('./dbConfig');
+const inquirer = require('inquirer');
+
 //CREATE Employee
 function addEmployee() {
     inquirer.prompt([
@@ -43,4 +46,4 @@ function readEmployee(){
 
 // DELETE Employee
 
-module.exports = "employee"
+module.exports = {addEmployee, readEmployee};

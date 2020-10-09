@@ -1,3 +1,6 @@
+const connection = require('./dbConfig');
+const inquirer = require('inquirer');
+
 //CREATE Department
 function addDept() {
     inquirer.prompt([
@@ -38,8 +41,7 @@ function readDept(){
         }
     );
 };
-// UPDATE DEPARTMENT
 
 // DELETE DEPARTMENT
 
-module.exports = "department"
+module.exports = {addDept, readDept};
