@@ -1,5 +1,6 @@
 const connection = require('./dbConfig');
 const inquirer = require('inquirer');
+const tracker = require('./tracker');
 
 //CREATE Role
 
@@ -29,6 +30,23 @@ function addRole() {
                 //can chain another function here if I want
             }
         );
+
+        inquirer
+        .prompt([
+            {
+                type: "list",
+                message: "Would you like to add anything else?",
+                choices: ["Yes", "No (return to home screen)"],
+                name: "rerunChoice"
+            }
+        ]).then(answer => {
+            if (answer.rerunChoice === "Yes"){
+                tracker.adder();
+            } else {
+                tracker.startTracker();
+            }
+        })
+
     });
 };
 
