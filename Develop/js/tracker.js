@@ -1,8 +1,5 @@
 const mysql = require('mysql');
 const inquirer = require('inquirer');
-const department = require('./department');
-const role = require('./role');
-const employee = require('./employee');
 const connection = require('./dbConfig');
 
 connection.connect(err => {
@@ -46,11 +43,11 @@ function adder (){
         }
     ]).then(answer => {
         if (answer.addChoice === "Department"){
-            department.addDept();
+            addDept();
         } else if (answer.addChoice === "Role"){
-            role.addRole();
+            addRole();
         } else if (answer.addChoice === "Employee"){
-            employee.addEmployee();
+            addEmployee();
         };
     });
 };
@@ -66,11 +63,11 @@ function reader(){
         }
     ]).then(answer => {
         if (answer.readChoice === "Departments"){
-            department.readDept();
+            readDept();
         } else if (answer.readChoice === "Roles"){
-            role.readRole();
+            readRole();
         } else if (answer.readChoice === "Employees"){
-            employee.readEmployee();
+            readEmployee();
         }
     });
 };
@@ -118,6 +115,23 @@ function updateRole(){
                     console.log("Employee role updated!");
                 }
             );
+
+            inquirer
+        .prompt([
+            {
+                type: "list",
+                message: "Would you like to update anything else?",
+                choices: ["Yes", "No (return to home screen)"],
+                name: "rerunChoice"
+            }
+        ]).then(answer => {
+            if (answer.rerunChoice === "Yes"){
+                updateRole();
+            } else {
+                startTracker();
+            }
+        })
+
         });
     });
 };
@@ -176,6 +190,22 @@ function readDept(){
             console.log(res);
         }
     );
+
+    inquirer
+        .prompt([
+            {
+                type: "list",
+                message: "Would you like to look at anything else?",
+                choices: ["Yes", "No (return to home screen)"],
+                name: "rerunChoice"
+            }
+        ]).then(answer => {
+            if (answer.rerunChoice === "Yes"){
+                reader();
+            } else {
+                startTracker();
+            }
+        })
 };
 
 // ROLE FUNCTIONS  
@@ -233,6 +263,22 @@ function readRole(){
             console.log(res);
         }
     );
+
+    inquirer
+        .prompt([
+            {
+                type: "list",
+                message: "Would you like to look at anything else?",
+                choices: ["Yes", "No (return to home screen)"],
+                name: "rerunChoice"
+            }
+        ]).then(answer => {
+            if (answer.rerunChoice === "Yes"){
+                reader();
+            } else {
+                startTracker();
+            }
+        })
 };
 
 // EMPLOYEE FUNCTIONS
@@ -279,12 +325,11 @@ function addEmployee() {
             }
         ]).then(answer => {
             if (answer.rerunChoice === "Yes"){
-                tracker.adder();
+                adder();
             } else {
-                tracker.startTracker();
+                startTracker();
             }
         })
-
     });
 };
 
@@ -296,4 +341,20 @@ function readEmployee(){
             console.log(res);
         }
     );
+
+    inquirer
+        .prompt([
+            {
+                type: "list",
+                message: "Would you like to look at anything else?",
+                choices: ["Yes", "No (return to home screen)"],
+                name: "rerunChoice"
+            }
+        ]).then(answer => {
+            if (answer.rerunChoice === "Yes"){
+                reader();
+            } else {
+                startTracker();
+            }
+        })
 };
