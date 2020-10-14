@@ -15,7 +15,7 @@ function startTracker(){
             type:'list',
             choices: ["Add department, role, or employee",
             "View departments, roles, or employees",
-            "Update employee roles"],
+            "Update employee roles", "I'm finished"],
             name: "task"
         }
     ]).then(answer => {
@@ -28,7 +28,9 @@ function startTracker(){
         } else if (answer.task === "Update employee roles"){
             // Update function
             updateRole();
-        } 
+        } else if (answer.task === "I'm finished"){
+            console.log("Thank you for using Employee Tracker, have a nice day!");
+        };
     });
 };
 
@@ -191,21 +193,7 @@ function readDept(){
         }
     );
 
-    inquirer
-        .prompt([
-            {
-                type: "list",
-                message: "Would you like to look at anything else?",
-                choices: ["Yes", "No (return to home screen)"],
-                name: "rerunChoice"
-            }
-        ]).then(answer => {
-            if (answer.rerunChoice === "Yes"){
-                reader();
-            } else {
-                startTracker();
-            }
-        })
+    reread();
 };
 
 // ROLE FUNCTIONS  
@@ -263,22 +251,8 @@ function readRole(){
             console.log(res);
         }
     );
-
-    inquirer
-        .prompt([
-            {
-                type: "list",
-                message: "Would you like to look at anything else?",
-                choices: ["Yes", "No (return to home screen)"],
-                name: "rerunChoice"
-            }
-        ]).then(answer => {
-            if (answer.rerunChoice === "Yes"){
-                reader();
-            } else {
-                startTracker();
-            }
-        })
+    
+    reread();
 };
 
 // EMPLOYEE FUNCTIONS
@@ -341,7 +315,11 @@ function readEmployee(){
             console.log(res);
         }
     );
+    
+    reread();
+};
 
+async function reread () {
     inquirer
         .prompt([
             {
@@ -356,5 +334,5 @@ function readEmployee(){
             } else {
                 startTracker();
             }
-        })
+        });
 };
