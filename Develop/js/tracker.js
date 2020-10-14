@@ -162,7 +162,6 @@ function addDept() {
             }, function (err, res) {
                 if (err) throw err;
                 console.log(res.affectedRows + " department added!\n");
-                //can chain another function here if I want
             }
         );
 
@@ -208,19 +207,30 @@ function addRole() {
             type: "input",
             message: "What is this role's ID?",
             name: "roleID"
+        },
+        {
+            type: "input",
+            message: "What is this role's Salary?",
+            name: "roleSAL"
+        },
+        {
+            type: "input",
+            message: "What is this role's Department ID?",
+            name: "roleDeptID"
         }
     ]).then(answer => {
-        const {roleNAME, roleID} = answer;
+        const {roleNAME, roleID, roleSAL, roleDeptID} = answer;
 
         let query = connection.query(
             "INSERT INTO role SET ?",
             {
                 id: roleID,
-                name: roleNAME
+                title: roleNAME,
+                salary: roleSAL,
+                department_id: roleDeptID
             }, function (err, res) {
                 if (err) throw err;
                 console.log(res.affectedRows + " role added!\n");
-                //can chain another function here if I want
             }
         );
 
@@ -272,20 +282,31 @@ function addEmployee() {
             type: "input",
             message: "What is this Employee's ID?",
             name: "empID"
+        },
+        {
+            type: "input",
+            message: "What is this Employee's role ID?",
+            name: "empRoleID"
+        },
+        {
+            type: "input",
+            message: "What is this Employee's department ID?",
+            name: "empDeptID"
         }
     ]).then(answer => {
-        const {empFIRST, empLAST, empID} = answer;
+        const {empFIRST, empLAST, empID, empRoleID, empDeptID} = answer;
 
         let query = connection.query(
             "INSERT INTO Employee SET ?",
             {
                 id: empID,
                 first_name: empFIRST,
-                last_name: empLAST
+                last_name: empLAST,
+                role_id: empRoleID,
+                department_id: empDeptID
             }, function (err, res) {
                 if (err) throw err;
                 console.log(res.affectedRows + " Employee added!\n");
-                //can chain another function here if I want
             }
         );
 
