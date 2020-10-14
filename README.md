@@ -1,8 +1,8 @@
 # employee-tracker
 
-
 This app uses node.js and mySQL to keep track of a database containing departments, roles, and employees. Through the console, the user is able to add to the database, view data, and update certain parts of the data. 
 
+<img src="./Assets/tracker.png">
 
 ## Instructions for Installation
 * Run ```tracker.sql``` in your mySQL Workbench.
