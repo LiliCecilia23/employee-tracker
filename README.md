@@ -14,6 +14,8 @@ This app uses node.js and mySQL to keep track of a database containing departmen
 ## Instructions for Use
 * Once the program is running, follow the prompts to interact with the database!
 
+<iframe src="https://drive.google.com/file/d/1phUlOcuMijb6MZKGit9-XYwIA4StjYye/preview" width="640" height="480"></iframe>
+
 ## Technologies Used
 * JavaScript
 * mySQL

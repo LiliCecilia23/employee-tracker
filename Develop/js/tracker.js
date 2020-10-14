@@ -290,11 +290,11 @@ function addEmployee() {
         },
         {
             type: "input",
-            message: "What is this Employee's department ID?",
-            name: "empDeptID"
+            message: "What is this Employee's manager's ID?",
+            name: "empManageID"
         }
     ]).then(answer => {
-        const {empFIRST, empLAST, empID, empRoleID, empDeptID} = answer;
+        const {empFIRST, empLAST, empID, empRoleID, empManageID} = answer;
 
         let query = connection.query(
             "INSERT INTO Employee SET ?",
@@ -303,7 +303,7 @@ function addEmployee() {
                 first_name: empFIRST,
                 last_name: empLAST,
                 role_id: empRoleID,
-                department_id: empDeptID
+                manager_id: empManageID
             }, function (err, res) {
                 if (err) throw err;
                 console.log(res.affectedRows + " Employee added!\n");
